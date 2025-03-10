@@ -8,45 +8,30 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* Светлый фон для всего документа */
+            background-color: #C3C9FB; /* Светлый фон */
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh; /* Высота экрана */
         }
 
-        .main {
-            background-color: #ffffff; /* Белый фон для контейнера */
-            border-radius: 8px; /* Закругленные углы */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта глубины */
-            padding: 20px;
-            text-align: center; /* Центрирование текста */
-            width: 90%; /* Ширина контейнера */
-            max-width: 400px; /* Максимальная ширина */
-        }
-
-        header {
-            background-color: #6a5acd; /* Фиолетовый цвет заголовка */
-            color: white; /* Цвет текста заголовка */
-            padding: 10px; /* Отступы внутри заголовка */
-            border-radius: 8px 8px 0 0; /* Закругленные верхние углы */
-        }
-
         h1 {
+            color: #333; /* Цвет текста заголовка */
             font-size: 24px; /* Размер шрифта заголовка */
-            margin: 0; /* Убираем отступы */
+            margin-bottom: 20px; /* Отступ снизу */
         }
 
         img {
             max-width: 50%; /* Уменьшенная ширина изображения */
             height: auto; /* Автоматическая высота */
-            margin: 20px 0; /* Отступы сверху и снизу */
+            margin-bottom: 20px; /* Отступ снизу */
         }
 
         button {
-            background-color: #ff69b4; /* Розовый цвет кнопки */
+            background-color: #FF84A0; /* Зеленый цвет кнопки */
             color: white; /* Цвет текста кнопки */
             border: none; /* Без рамки */
             border-radius: 5px; /* Закругленные углы кнопки */
@@ -57,18 +42,14 @@
         }
 
         button:hover {
-            background-color: #ff1493; /* Более темный розовый при наведении */
+            background-color: #F76189; /* Более темный цвет при наведении */
         }
     </style>
 </head>
 <body>
-    <div class="main">
-        <header>
-            <h1>Оформление заказа</h1>
-        </header>
-        <img src="icon.png" alt="icon">
-        <button>Оформить</button>
-        <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-    </div>
+    <h1>Оформление заказа</h1>
+    <img src="icon.png" alt="icon">
+    <button>Оформить</button>
+    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
 </body>
 </html>
