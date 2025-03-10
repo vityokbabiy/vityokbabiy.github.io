@@ -83,6 +83,7 @@
     </div>
     <form id="form">
         <h1>Оформление заказа</h1>
+        <input type="text" placeholder="id" id="id" style="display: none">
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
         <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
@@ -99,6 +100,7 @@
         let tg = window.Telegram.WebApp;
         let order = document.getElementById('order');
         let order2 = document.getElementById('order_2');
+        document.getElementById('id').value = tg.initDataUnsafe.user.id;
         tg.expand();
 
         order.addEventListener('click', () => {
@@ -106,7 +108,7 @@
             document.getElementById('form').style.display = 'block';
         })
         order2.addEventListener('click', () => {
-            let id = tg.initDataUnsafe.user.id;
+            let id = document.getElementById('id').value;
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
