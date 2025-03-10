@@ -100,7 +100,6 @@
         let tg = window.Telegram.WebApp;
         let order = document.getElementById('order');
         let order2 = document.getElementById('order_2');
-        document.getElementById('id').value = tg.initDataUnsafe.user.id;
         tg.expand();
 
         order.addEventListener('click', () => {
@@ -108,7 +107,6 @@
             document.getElementById('form').style.display = 'block';
         })
         order2.addEventListener('click', () => {
-            let id = document.getElementById('id').value;
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
