@@ -9,13 +9,13 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #C3C9FB; /* Светлый фон */
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Высота экрана */
+            margin: 0; /* Убираем отступы по умолчанию */
+            padding: 20px; /* Внутренние отступы */
+            display: flex; /* Используем flexbox для центровки */
+            flex-direction: column; /* Вертикальная ориентация */
+            align-items: center; /* Центрируем по горизонтали */
+            justify-content: center; /* Центрируем по вертикали */
+            height: 100vh; /* Высота на весь экран */
         }
 
         h1 {
@@ -33,12 +33,12 @@
         button {
             background-color: #FF84A0; /* Зеленый цвет кнопки */
             color: white; /* Цвет текста кнопки */
-            border: none; /* Без рамки */
-            border-radius: 5px; /* Закругленные углы кнопки */
-            padding: 10px 20px; /* Отступы внутри кнопки */
-            font-size: 16px; /* Размер шрифта кнопки */
+            padding: 15px 30px; /* Отступы внутри кнопки */
+            border: none; /* Убираем рамку */
+            border-radius: 5px; /* Закругленные углы */
             cursor: pointer; /* Курсор при наведении */
-            transition: background-color 0.3s; /* Плавный переход цвета фона */
+            font-size: 1.2em; /* Размер шрифта кнопки */
+            transition: background-color 0.3s ease; /* Плавный переход цвета */ /* Плавный переход цвета фона */
         }
 
         button:hover {
