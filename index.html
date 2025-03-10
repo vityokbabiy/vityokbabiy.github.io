@@ -83,13 +83,14 @@
     </div>
     <form id="form">
         <h1>Оформление заказа</h1>
-        <input type="text" placeholder="Контактный номер" id="number">
+        <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
         <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
         <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
+        <input type="text" placeholder="Размер товара" id="size">
         <input type="checkbox" checked="on">Сохранить данные<br>
         <button id="order_2">Заказать</button>
     </form>
@@ -98,10 +99,35 @@
         let tg = window.Telegram.WebApp;
         let order = document.getElementById('order');
         let order2 = document.getElementById('order_2');
+        tg.expand();
 
         order.addEventListener('click', () => {
             document.getElementById('main').style.display = 'none';
             document.getElementById('form').style.display = 'block';
+        })
+        order2.addEventListener('click', () => {
+            let name = document.getElementById('name').value;
+            let city = document.getElementById('city').value;
+            let delivery_address = document.getElementById('delivery_address').value;
+            let house_address = document.getElementById('house_address').value;
+            let apartment_number = document.getElementById('apartment_number').value;
+            let post_index = document.getElementById('post_index').value;
+            let articule = document.getElementById('articule').value;
+            let size = document.getElementById('size').value;
+
+            let data = {
+                name: name,
+                city: city,
+                delivery_address: delivery_address,
+                house_address: house_address,
+                apartment_number: apartment_number,
+                post_index: post_index,
+                articule: articule,
+                size: size,
+            }
+
+            tg.sendData(JSON.stringify(data));
+            tg.close();
         })
     </script>
 </body>
