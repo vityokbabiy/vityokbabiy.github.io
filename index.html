@@ -42,14 +42,59 @@
         }
 
         button:hover {
-            background-color: #F76189; /* Более темный цвет при наведении */
+            background: #F76189; /* Более темный цвет при наведении */
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Учитываем padding в ширине */
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        #form {
+            display: none;
+            text-align: center;
+            background: #C3C9FB;
+            padding: 20px;
+            max-width: 400px;
+            margin: auto;
+        }
+        #order_2{
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
+    <div id="main">
     <h1>Оформление заказа</h1>
     <img src="icon.png" alt="icon">
-    <button>Оформить</button>
+    <button id="order">Оформить</button>
+    </div>
+    <form id="form">
+        <input type="text" placeholder="Контактный номер" id="number">
+        <input type="text" placeholder="Город" id="city">
+        <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
+        <input type="text" placeholder="Домашний адрес" id="house_address">
+        <input type="text" placeholder="Номер квартиры" id="apartment_number">
+        <input type="text" placeholder="Почтовый индекс" id="post_index">
+        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
+        <input type="checkbox" checked="on">Сохранить данные<br>
+        <button id="order_2">Заказать</button>
+    </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+    <script>
+        let tg = window.Telegram.WebApp;
+        let order = document.getElementById('order');
+        let order2 = document.getElementById('order_2');
+
+        order.addEventListener('click', () => {
+            document.getElementById('main').style.display = 'none';
+            document.getElementById('form').style.display = 'block';
+        })
+    </script>
 </body>
 </html>
