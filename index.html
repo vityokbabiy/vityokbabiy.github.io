@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: var(--tg-theme-bg-color); /* Светлый фон */
+            background-color: #f0f0f0; /* Светлый фон для всего документа */
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,7 +18,7 @@
         }
 
         .main {
-            background: var(--tg-theme-bg-color); /* Белый фон для контейнера */
+            background-color: #C3C9FB; /* Белый фон для контейнера */
             border-radius: 8px; /* Закругленные углы */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта глубины */
             padding: 20px;
@@ -27,21 +27,27 @@
             max-width: 400px; /* Максимальная ширина */
         }
 
+        header {
+            background-color: #C3C9FB; /* Фиолетовый цвет заголовка */
+            color: #8693E2; /* Цвет текста заголовка */
+            padding: 10px; /* Отступы внутри заголовка */
+            border-radius: 8px 8px 0 0; /* Закругленные верхние углы */
+        }
+
         h1 {
-            color: var(--tg-theme-header-bg-color); /* Темный цвет текста заголовка */
             font-size: 24px; /* Размер шрифта заголовка */
-            margin-bottom: 20px; /* Отступ снизу */
+            margin: 0; /* Убираем отступы */
         }
 
         img {
-            max-width: 80%; /* Уменьшенная ширина изображения */
+            max-width: 70%; /* Уменьшенная ширина изображения */
             height: auto; /* Автоматическая высота */
-            margin-bottom: 20px; /* Отступ снизу */
+            margin: 20px 0; /* Отступы сверху и снизу */
         }
 
         button {
-            background: var(--tg-theme-button-color); /* Цвет кнопки */
-            color: var(--tg-theme-button-text-color); /* Цвет текста кнопки */
+            background-color: #FF84A0; /* Розовый цвет кнопки */
+            color: white; /* Цвет текста кнопки */
             border: none; /* Без рамки */
             border-radius: 5px; /* Закругленные углы кнопки */
             padding: 10px 20px; /* Отступы внутри кнопки */
@@ -51,14 +57,7 @@
         }
 
         button:hover {
-            background-color: #d70497; /* Цвет кнопки при наведении */
-        }
-
-        header {
-            background: var(--tg-theme-header-bg-color); /* Цвет фона заголовка */
-            color: var(--tg-theme-text-color); /* Цвет текста заголовка */
-            padding: 10px; /* Отступы внутри заголовка */
-            border-radius: 8px 8px 0 0; /* Закругленные верхние углы */
+            background-color: #ff4770; /* Более темный розовый при наведении */
         }
     </style>
 </head>
