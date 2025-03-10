@@ -8,8 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: var(--tg-theme-bg-color);
-            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color); /* Светлый фон */
             margin: 0;
             padding: 0;
             display: flex;
@@ -19,7 +18,7 @@
         }
 
         .main {
-            background-color: var(--tg-theme-secondary-bg-color); /* Белый фон для контейнера */
+            background: var(--tg-theme-bg-color); /* Белый фон для контейнера */
             border-radius: 8px; /* Закругленные углы */
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта глубины */
             padding: 20px;
@@ -29,19 +28,19 @@
         }
 
         h1 {
-            color: var(--tg-theme-text-color); /* Темный цвет текста заголовка */
+            color: var(--tg-theme-header-bg-color); /* Темный цвет текста заголовка */
             font-size: 24px; /* Размер шрифта заголовка */
             margin-bottom: 20px; /* Отступ снизу */
         }
 
         img {
-            max-width: 100%; /* Адаптивное изображение */
+            max-width: 80%; /* Уменьшенная ширина изображения */
             height: auto; /* Автоматическая высота */
             margin-bottom: 20px; /* Отступ снизу */
         }
 
         button {
-            background-color: var(--tg-theme-button-color); /* Цвет кнопки */
+            background: var(--tg-theme-button-color); /* Цвет кнопки */
             color: var(--tg-theme-button-text-color); /* Цвет текста кнопки */
             border: none; /* Без рамки */
             border-radius: 5px; /* Закругленные углы кнопки */
@@ -52,13 +51,22 @@
         }
 
         button:hover {
-            background-color: #0056b3; /* Цвет кнопки при наведении */
+            background-color: #d70497; /* Цвет кнопки при наведении */
+        }
+
+        header {
+            background: var(--tg-theme-header-bg-color); /* Цвет фона заголовка */
+            color: var(--tg-theme-text-color); /* Цвет текста заголовка */
+            padding: 10px; /* Отступы внутри заголовка */
+            border-radius: 8px 8px 0 0; /* Закругленные верхние углы */
         }
     </style>
 </head>
 <body>
     <div class="main">
-        <h1>Оформление заказа</h1>
+        <header>
+            <h1>Оформление заказа</h1>
+        </header>
         <img src="icon.png" alt="icon">
         <button>Оформить</button>
         <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
