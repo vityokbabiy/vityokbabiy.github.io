@@ -91,7 +91,7 @@
         <input type="text" placeholder="Почтовый индекс" id="post_index">
         <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
         <input type="text" placeholder="Размер товара" id="size">
-        <input type="checkbox" checked="on">Сохранить данные<br>
+        <input type="checkbox" checked="on" id="save">Сохранить данные<br>
         <button id="order_2">Заказать</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
@@ -114,6 +114,7 @@
             let post_index = document.getElementById('post_index').value;
             let articule = document.getElementById('articule').value;
             let size = document.getElementById('size').value;
+            let checkbox = document.getElementById('save').value;
 
             let data = {
                 name: name,
@@ -124,6 +125,7 @@
                 post_index: post_index,
                 articule: articule,
                 size: size,
+                checkbox: checkbox,
             }
 
             tg.sendData(JSON.stringify(data));
