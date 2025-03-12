@@ -62,7 +62,7 @@
             max-width: 400px;
             margin: auto;
         }
-        #form {
+        #form, #form2 {
             display: none;
             text-align: center;
             background: #C3C9FB;
@@ -82,6 +82,13 @@
     <button id="order">Оформить</button>
     </div>
     <form id="form">
+        <h1>Информация о товаре</h1>
+        <h2>Прикрепите скриншот товара Poizon</h2>
+        <input type="file" placeholder="Скриншот товара Poizon" id="order_screen">
+        <input type="text" placeholder="Размер товара" id="size">
+        <button id="order_2">Дальше</button>
+    </form>
+    <form id="form2">
         <h1>Оформление заказа</h1>
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
@@ -89,16 +96,15 @@
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
-        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
-        <input type="text" placeholder="Размер товара" id="size">
         <input type="checkbox" checked="on" id="save">Сохранить данные<br>
-        <button id="order_2">Заказать</button>
+        <button id="order_3">Заказать</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script>
         let tg = window.Telegram.WebApp;
         let order = document.getElementById('order');
         let order2 = document.getElementById('order_2');
+        let order3 = document.getElementById('order_3');
         tg.expand();
 
         order.addEventListener('click', () => {
@@ -106,14 +112,17 @@
             document.getElementById('form').style.display = 'block';
         })
         order2.addEventListener('click', () => {
+            let size = document.getElementById('size').value;
+            document.getElementById('form').style.display = 'none';
+            document.getElementById('form2').style.display = 'block';
+        })
+        order3.addEventListener('click', () => {
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
             let house_address = document.getElementById('house_address').value;
             let apartment_number = document.getElementById('apartment_number').value;
             let post_index = document.getElementById('post_index').value;
-            let articule = document.getElementById('articule').value;
-            let size = document.getElementById('size').value;
             let checkbox = document.getElementById('save').value;
 
             let data = {
@@ -123,8 +132,6 @@
                 house_address: house_address,
                 apartment_number: apartment_number,
                 post_index: post_index,
-                articule: articule,
-                size: size,
                 checkbox: checkbox
             }
 
