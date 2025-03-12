@@ -77,11 +77,20 @@
 </head>
 <body>
     <div id="main">
-    <h1>Оформление заказа</h1>
-    <img src="icon.png" alt="icon">
-    <button id="order">Оформить</button>
+        <h1>Оформление заказа</h1>
+        <img src="icon.png" alt="icon">
+        <button id="order">Оформить</button>
     </div>
-    <form id="form">
+
+    <form id="form" style="display:none;">
+        <h1>Информация о товаре</h1>
+        <input type="file" id="order_screen" accept="image/*">
+        <input type="text" placeholder="Размер товара" id="size">
+        <input type="text" placeholder="Артикул товара" id="articule">
+        <button type="button" id="order_info">Дальше</button>
+    </form>
+
+    <form id="form2" style="display:none;">
         <h1>Оформление заказа</h1>
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
@@ -89,22 +98,37 @@
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
-        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
-        <input type="text" placeholder="Размер товара" id="size">
-        <input type="checkbox" checked="on" id="save">Сохранить данные<br>
-        <button id="order_2">Заказать</button>
+        <input type="checkbox" id="save" checked>Сохранить данные<br>
+        <button type="button" id="order_2">Сделать заказ</button>
     </form>
-    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
+
     <script>
-        let tg = window.Telegram.WebApp;
-        let order = document.getElementById('order');
-        let order2 = document.getElementById('order_2');
-        tg.expand();
+        const order = document.getElementById('order');
+        const order2 = document.getElementById('order_2');
 
         order.addEventListener('click', () => {
             document.getElementById('main').style.display = 'none';
             document.getElementById('form').style.display = 'block';
-        })
+        });
+
+        document.getElementById('order_info').addEventListener('click', () => {
+            const fileInput = document.getElementById('order_screen');
+            const size = document.getElementById('size').value;
+            const articule = document.getElementById('articule').value;
+
+            // Проверка на наличие файла
+            if (fileInput.files.length === 0) {
+                alert('Пожалуйста, выберите изображение.');
+                return;
+            }
+
+            // Сохраняем информацию и переходим к следующему шагу
+            localStorage.setItem('size', size);
+            localStorage.setItem('articule', articule);
+            document.getElementById('form').style.display = 'none';
+            document.getElementById('form2').style.display = 'block';
+        });
+
         order2.addEventListener('click', () => {
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
@@ -112,25 +136,32 @@
             let house_address = document.getElementById('house_address').value;
             let apartment_number = document.getElementById('apartment_number').value;
             let post_index = document.getElementById('post_index').value;
-            let articule = document.getElementById('articule').value;
-            let size = document.getElementById('size').value;
-            let checkbox = document.getElementById('save').value;
+            let articule = localStorage.getItem('articule');
+            let size = localStorage.getItem('size');
+            let checkbox = document.getElementById('save').checked;
 
-            let data = {
-                name: name,
-                city: city,
-                delivery_address: delivery_address,
-                house_address: house_address,
-                apartment_number: apartment_number,
-                post_index: post_index,
-                articule: articule,
-                size: size,
-                checkbox: checkbox
+            // Создаем объект FormData для отправки данных
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('city', city);
+            formData.append('delivery_address', delivery_address);
+            formData.append('house_address', house_address);
+            formData.append('apartment_number', apartment_number);
+            formData.append('post_index', post_index);
+            formData.append('articule', articule);
+            formData.append('size', size);
+            formData.append('checkbox', checkbox);
+
+            // Добавляем изображение в FormData
+            const fileInput = document.getElementById('order_screen');
+            if (fileInput.files.length > 0) {
+                formData.append('photo', fileInput.files[0]);
             }
 
-            tg.sendData(JSON.stringify(data));
+            // Отправка данных через Telegram API
+            tg.sendData(JSON.stringify(Object.fromEntries(formData)));
             tg.close();
-        })
+        });
     </script>
 </body>
 </html>
