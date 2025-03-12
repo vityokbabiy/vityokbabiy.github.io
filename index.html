@@ -63,7 +63,6 @@
             margin: auto;
         }
         #form {
-            display: none;
             text-align: center;
             background: #C3C9FB;
             padding: 20px;
@@ -102,17 +101,20 @@
     </form>
 
     <script>
-        const order = document.getElementById('order');
-        const order2 = document.getElementById('order_2');
+        let tg = window.Telegram.WebApp;
+        let order = document.getElementById('order');
+        let order_info = document.getElementById('order_info');
+        let order2 = document.getElementById('order_2');
+        tg.expand();
 
         order.addEventListener('click', () => {
             document.getElementById('main').style.display = 'none';
             document.getElementById('form').style.display = 'block';
         });
 
-        document.getElementById('order_info').addEventListener('click', () => {
-            const size = document.getElementById('size').value;
-            const articule = document.getElementById('articule').value;
+        order_info.addEventListener('click', () => {
+            let size = document.getElementById('size').value;
+            let articule = document.getElementById('articule').value;
 
             // Сохраняем информацию и переходим к следующему шагу
             localStorage.setItem('size', size);
