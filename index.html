@@ -84,9 +84,8 @@
 
     <form id="form" style="display:none;">
         <h1>Информация о товаре</h1>
-        <input type="file" id="order_screen" accept="image/*">
-        <input type="text" placeholder="Размер товара" id="size">
-        <input type="text" placeholder="Артикул товара" id="articule">
+        <input type="text" placeholder="Артикул товаров" id="articule">
+        <input type="text" placeholder="Размер товаров" id="size">
         <button type="button" id="order_info">Дальше</button>
     </form>
 
@@ -112,15 +111,8 @@
         });
 
         document.getElementById('order_info').addEventListener('click', () => {
-            const fileInput = document.getElementById('order_screen');
             const size = document.getElementById('size').value;
             const articule = document.getElementById('articule').value;
-
-            // Проверка на наличие файла
-            if (fileInput.files.length === 0) {
-                alert('Пожалуйста, выберите изображение.');
-                return;
-            }
 
             // Сохраняем информацию и переходим к следующему шагу
             localStorage.setItem('size', size);
@@ -140,26 +132,19 @@
             let size = localStorage.getItem('size');
             let checkbox = document.getElementById('save').checked;
 
-            // Создаем объект FormData для отправки данных
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('city', city);
-            formData.append('delivery_address', delivery_address);
-            formData.append('house_address', house_address);
-            formData.append('apartment_number', apartment_number);
-            formData.append('post_index', post_index);
-            formData.append('articule', articule);
-            formData.append('size', size);
-            formData.append('checkbox', checkbox);
-
-            // Добавляем изображение в FormData
-            const fileInput = document.getElementById('order_screen');
-            if (fileInput.files.length > 0) {
-                formData.append('photo', fileInput.files[0]);
+            let data = {
+                name: name,
+                city: city,
+                delivery_address: delivery_address,
+                house_address: house_address,
+                apartment_number: apartment_number,
+                post_index: post_index,
+                articule: articule,
+                size: size,
+                checkbox: checkbox,
             }
 
-            // Отправка данных через Telegram API
-            tg.sendData(JSON.stringify(Object.fromEntries(formData)));
+            tg.sendData(JSON.stringify(data));
             tg.close();
         });
     </script>
