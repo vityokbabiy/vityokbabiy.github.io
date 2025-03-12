@@ -62,7 +62,8 @@
             max-width: 400px;
             margin: auto;
         }
-        #form {
+        #form, #form2 {
+            display: none;
             text-align: center;
             background: #C3C9FB;
             padding: 20px;
@@ -76,19 +77,17 @@
 </head>
 <body>
     <div id="main">
-        <h1>Оформление заказа</h1>
-        <img src="icon.png" alt="icon">
-        <button id="order">Оформить</button>
+    <h1>Оформление заказа</h1>
+    <img src="icon.png" alt="icon">
+    <button id="order">Оформить</button>
     </div>
-
-    <form id="form" style="display:none;">
-        <h1>Информация о товаре</h1>
-        <input type="text" placeholder="Артикул товаров" id="articule">
-        <input type="text" placeholder="Размер товаров" id="size">
-        <button type="button" id="order_info">Далее</button>
+    <form id="form">
+        <h1>Оформление заказа</h1>
+        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
+        <input type="text" placeholder="Размер товара" id="size">
+        <button id="order_2">Заказать</button>
     </form>
-
-    <form id="form2" style="display:none;">
+    <form id="form2">
         <h1>Оформление заказа</h1>
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
@@ -96,59 +95,71 @@
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
-        <input type="checkbox" id="save" checked>Сохранить данные<br>
-        <button type="button" id="order_2">Сделать заказ</button>
+        <input type="checkbox" checked="on" id="save">Сохранить данные<br>
+        <button id="order_3">Заказать</button>
     </form>
-
+    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script>
         let tg = window.Telegram.WebApp;
-        let order = document.getElementById('order');
-        let order_info = document.getElementById('order_info');
-        let order2 = document.getElementById('order_2');
-        tg.expand();
+let order = document.getElementById('order');
+let order2 = document.getElementById('order_2');
+let order3 = document.getElementById('order_3');
+tg.expand();
+let size;
+let articule;
 
-        order.addEventListener('click', () => {
-            document.getElementById('main').style.display = 'none';
-            document.getElementById('form').style.display = 'block';
-        });
+// Обработчик клика для первой кнопки
+order.addEventListener('click', () => {
+    document.getElementById('main').style.display = 'none';
+    document.getElementById('form').style.display = 'block';
+});
 
-        order_info.addEventListener('click', () => {
-            let size = document.getElementById('size').value;
-            let articule = document.getElementById('articule').value;
+// Обработчик клика для второй кнопки
+order2.addEventListener('click', () => {
+    // Сохраняем значения в localStorage перед переходом к следующему шагу
+    size = document.getElementById('size').value;
+    articule = document.getElementById('articule').value;
 
-            // Сохраняем информацию и переходим к следующему шагу
-            localStorage.setItem('size', size);
-            localStorage.setItem('articule', articule);
-            document.getElementById('form').style.display = 'none';
-            document.getElementById('form2').style.display = 'block';
-        });
+    localStorage.setItem('size', size); // Сохраняем размер
+    localStorage.setItem('articule', articule); // Сохраняем артикул
 
-        order2.addEventListener('click', () => {
-            let name = document.getElementById('name').value;
-            let city = document.getElementById('city').value;
-            let delivery_address = document.getElementById('delivery_address').value;
-            let house_address = document.getElementById('house_address').value;
-            let apartment_number = document.getElementById('apartment_number').value;
-            let post_index = document.getElementById('post_index').value;
-            let articule = localStorage.getItem('articule');
-            let size = localStorage.getItem('size');
-            let checkbox = document.getElementById('save').checked;
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('form2').style.display = 'block';
+});
 
-            let data = {
-                name: name,
-                city: city,
-                delivery_address: delivery_address,
-                house_address: house_address,
-                apartment_number: apartment_number,
-                post_index: post_index,
-                articule: articule,
-                size: size,
-                checkbox: checkbox,
-            }
+// Обработчик клика для третьей кнопки
+order3.addEventListener('click', () => {
+    let name = document.getElementById('name').value;
+    let city = document.getElementById('city').value;
+    let delivery_address = document.getElementById('delivery_address').value;
+    let house_address = document.getElementById('house_address').value;
+    let apartment_number = document.getElementById('apartment_number').value;
+    let post_index = document.getElementById('post_index').value;
 
-            tg.sendData(JSON.stringify(data));
-            tg.close();
-        });
+    // Получаем сохраненные значения из localStorage
+    articule = localStorage.getItem('articule');
+    size = localStorage.getItem('size');
+
+    // Получаем состояние чекбокса
+    let checkbox = document.getElementById('save').checked; // Используем checked вместо value
+
+    // Формируем объект данных для отправки
+    let data = {
+        name: name,
+        city: city,
+        delivery_address: delivery_address,
+        house_address: house_address,
+        apartment_number: apartment_number,
+        post_index: post_index,
+        articule: articule,
+        size: size,
+        save: checkbox // Изменяем имя ключа на save
+    };
+
+    // Отправляем данные
+    tg.sendData(JSON.stringify(data));
+    tg.close();
+});
     </script>
 </body>
 </html>
