@@ -105,56 +105,46 @@
         let order2 = document.getElementById('order_2');
         let order3 = document.getElementById('order_3');
         tg.expand();
-        let size;
-        let articule;
+        let size = "";
+        let articule = "";
 
-// Обработчик клика для первой кнопки
-order.addEventListener('click', () => {
-    document.getElementById('main').style.display = 'none';
-    document.getElementById('form').style.display = 'block';
-});
+        // Обработчик клика для первой кнопки
+        order.addEventListener('click', () => {
+            document.getElementById('main').style.display = 'none';
+            document.getElementById('form').style.display = 'block';
+        });
 
-// Обработчик клика для второй кнопки
-order2.addEventListener('click', () => {
-    // Сохраняем значения в localStorage перед переходом к следующему шагу
-    size = document.getElementById('size').value;
-    articule = document.getElementById('articule').value;
+        // Обработчик клика для второй кнопки
+        order2.addEventListener('click', () => {
+            size = document.getElementById('size').value;
+            articule = document.getElementById('articule').value;
 
-    localStorage.setItem('size', size); // Сохраняем размер
-    localStorage.setItem('articule', articule); // Сохраняем артикул
+            document.getElementById('form').style.display = 'none';
+            document.getElementById('form2').style.display = 'block';
+        });
 
-    document.getElementById('form').style.display = 'none';
-    document.getElementById('form2').style.display = 'block';
-});
+        // Обработчик клика для третьей кнопки
+        order3.addEventListener('click', () => {
+            let name = document.getElementById('name').value;
+            let city = document.getElementById('city').value;
+            let delivery_address = document.getElementById('delivery_address').value;
+            let house_address = document.getElementById('house_address').value;
+            let apartment_number = document.getElementById('apartment_number').value;
+            let post_index = document.getElementById('post_index').value;
+            let checkbox = document.getElementById('save').value;
 
-// Обработчик клика для третьей кнопки
-order3.addEventListener('click', () => {
-    let name = document.getElementById('name').value;
-    let city = document.getElementById('city').value;
-    let delivery_address = document.getElementById('delivery_address').value;
-    let house_address = document.getElementById('house_address').value;
-    let apartment_number = document.getElementById('apartment_number').value;
-    let post_index = document.getElementById('post_index').value;
-
-    // Получаем сохраненные значения из localStorage
-    articule = localStorage.getItem('articule');
-    size = localStorage.getItem('size');
-
-    // Получаем состояние чекбокса
-    let checkbox = document.getElementById('save').checked; // Используем checked вместо value
-
-    // Формируем объект данных для отправки
-    let data = {
-        name: name,
-        city: city,
-        delivery_address: delivery_address,
-        house_address: house_address,
-        apartment_number: apartment_number,
-        post_index: post_index,
-        articule: articule,
-        size: size,
-        save: checkbox // Изменяем имя ключа на save
-    };
+            // Формируем объект данных для отправки
+            let data = {
+                name: name,
+                city: city,
+                delivery_address: delivery_address,
+                house_address: house_address,
+                apartment_number: apartment_number,
+                post_index: post_index,
+                articule: articule,
+                size: size,
+                save: checkbox // Изменяем имя ключа на save
+            };
 
     // Отправляем данные
     tg.sendData(JSON.stringify(data));
