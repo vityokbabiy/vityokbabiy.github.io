@@ -97,6 +97,7 @@
         <input type="text" placeholder="Почтовый индекс" id="post_index">
         <input type="checkbox" checked="on" id="save">Сохранить данные<br>
         <button id="order_3">Заказать</button>
+        <button id="back">Назад</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script>
@@ -104,6 +105,7 @@
         let order = document.getElementById('order');
         let order2 = document.getElementById('order_2');
         let order3 = document.getElementById('order_3');
+        let back = document.getElementById('back');
         tg.expand();
         let size = "";
         let articule = "";
@@ -112,6 +114,10 @@
         order.addEventListener('click', () => {
             document.getElementById('main').style.display = 'none';
             document.getElementById('form').style.display = 'block';
+        });
+        back.addEventListener('click', () => {
+            document.getElementById('form').style.display = 'block';
+            document.getElementById('form2').style.display = 'none';
         });
 
         // Обработчик клика для второй кнопки
