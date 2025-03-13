@@ -131,7 +131,6 @@
 
         // Обработчик клика для третьей кнопки
         order3.addEventListener('click', () => {
-            let id = tg.initDataUnsafe.user.id;
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
@@ -142,7 +141,6 @@
 
             // Формируем объект данных для отправки
             let data = {
-                id: id,
                 name: name,
                 city: city,
                 delivery_address: delivery_address,
