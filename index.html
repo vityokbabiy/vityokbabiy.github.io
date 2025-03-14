@@ -82,16 +82,16 @@
     <button id="order">Оформить</button>
     </div>
     <form id="form">
-        <h1>Оформление заказа</h1>
+        <h1>Информация о товаре</h1>
+        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
+        <input type="text" placeholder="Размер товара" id="size">
+        <h1>Данные для доставки Boxberry</h1>
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
         <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
-        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
-        <input type="text" placeholder="Размер товара" id="size">
-        <input type="checkbox" checked="on" id="save">Сохранить данные<br>
         <button id="order_2">Заказать</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
@@ -106,15 +106,14 @@
             document.getElementById('form').style.display = 'block';
         })
         order2.addEventListener('click', () => {
+            let articule = document.getElementById('articule').value;
+            let size = document.getElementById('size').value;
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
             let house_address = document.getElementById('house_address').value;
             let apartment_number = document.getElementById('apartment_number').value;
             let post_index = document.getElementById('post_index').value;
-            let articule = document.getElementById('articule').value;
-            let size = document.getElementById('size').value;
-            let checkbox = document.getElementById('save').value;
 
             let data = {
                 name: name,
@@ -125,7 +124,6 @@
                 post_index: post_index,
                 articule: articule,
                 size: size,
-                checkbox: checkbox,
             }
 
             tg.sendData(JSON.stringify(data));
