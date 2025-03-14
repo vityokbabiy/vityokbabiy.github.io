@@ -62,7 +62,7 @@
             max-width: 400px;
             margin: auto;
         }
-        #form, #form2 {
+        #form {
             display: none;
             text-align: center;
             background: #C3C9FB;
@@ -83,64 +83,39 @@
     </div>
     <form id="form">
         <h1>Оформление заказа</h1>
-        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
-        <input type="text" placeholder="Размер товара" id="size">
-        <button id="order_2">Заказать</button>
-    </form>
-    <form id="form2">
-        <h1>Оформление заказа</h1>
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
         <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
+        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
+        <input type="text" placeholder="Размер товара" id="size">
         <input type="checkbox" checked="on" id="save">Сохранить данные<br>
-        <button id="order_3">Заказать</button>
-        <button id="back">Назад</button>
+        <button id="order_2">Заказать</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script>
         let tg = window.Telegram.WebApp;
         let order = document.getElementById('order');
         let order2 = document.getElementById('order_2');
-        let order3 = document.getElementById('order_3');
-        let back = document.getElementById('back');
         tg.expand();
-        let size = "";
-        let articule = "";
 
-        // Обработчик клика для первой кнопки
         order.addEventListener('click', () => {
             document.getElementById('main').style.display = 'none';
             document.getElementById('form').style.display = 'block';
-        });
-
-        back.addEventListener('click', () => {
-            document.getElementById('form').style.display = 'block';
-            document.getElementById('form2').style.display = 'none';
-        });
-
-        // Обработчик клика для второй кнопки
+        })
         order2.addEventListener('click', () => {
-            size = document.getElementById('size').value;
-            articule = document.getElementById('articule').value;
-
-            document.getElementById('form').style.display = 'none';
-            document.getElementById('form2').style.display = 'block';
-        });
-
-        // Обработчик клика для третьей кнопки
-        order3.addEventListener('click', () => {
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
             let house_address = document.getElementById('house_address').value;
             let apartment_number = document.getElementById('apartment_number').value;
             let post_index = document.getElementById('post_index').value;
+            let articule = document.getElementById('articule').value;
+            let size = document.getElementById('size').value;
             let checkbox = document.getElementById('save').value;
 
-            // Формируем объект данных для отправки
             let data = {
                 name: name,
                 city: city,
@@ -150,13 +125,12 @@
                 post_index: post_index,
                 articule: articule,
                 size: size,
-                save: checkbox // Изменяем имя ключа на save
-            };
+                checkbox: checkbox,
+            }
 
-    // Отправляем данные
-    tg.sendData(JSON.stringify(data));
-    tg.close();
-});
+            tg.sendData(JSON.stringify(data));
+            tg.close();
+        })
     </script>
 </body>
 </html>
