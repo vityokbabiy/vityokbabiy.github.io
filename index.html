@@ -3,77 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <title>Poizon Pavlov Order</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Handjet:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Handjet:wght@100..900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body {
-    height: 870px;
-    display: flex;
-    justify-content: center;
-}
-.container {
-    width: 390px;
-    text-align: center;
-}
-.wrapper {
-    background: rgb(47,31,111);
-    background: linear-gradient(180deg, rgba(47,31,111,1) 0%, rgba(166,0,99,1) 100%);
-    width: 390px;
-    height: 870px;
-    overflow: hidden;
-    position: relative; /* Позволяет позиционировать элементы внутри */
-    text-align: center;
-}
-.logo {
-    font-family: "Damion", cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 58px;
-    color: white;
-    text-shadow:
-        -1px -1px 0 #F33B7F,
-        1px -1px 0 #F33B7F,
-        -1px 1px 0 #F33B7F,
-        1px 1px 0 #F33B7F,
-        3px 3px 5px rgba(0, 0, 0, 0.7); /* Adding a drop shadow */
-}
-h1 {
-    color: white;
-    font-family: "Handjet", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 36px;
-    font-variation-settings:
-    "ELGR" 1,
-    "ELSH" 2;
-}
-.hero_container {
-    display: flex; /* Используем Flexbox */
-    flex-direction: column; /* Элементы располагаются в колонку */
-    align-items: center; /* Центрируем по горизонтали */
-    text-align: center; /* Центрируем текст внутри hero_text */
-    height: 100vh; /* Задаем высоту контейнера на весь экран */
-}
-p {
-    color:  white;
-    font-family: "Alumni Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 26px;
-}
-.hero_text {
-    width: 300px;
-    margin: 20px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 870px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            width: 390px;
+            text-align: center;
+            display: flex; /* Используем Flexbox */
+            justify-content: center; /* Центрируем по горизонтали */
+            align-items: center; /* Центрируем по вертикали */
+            height: 100px; /* Задаем высоту контейнера, чтобы логотип был по центру */
+        }
+        .wrapper {
+            background: rgb(47,31,111);
+            background: linear-gradient(180deg, rgba(47,31,111,1) 0%, rgba(166,0,99,1) 100%);
+            width: 390px;
+            height: 870px;
+            overflow: hidden;
+            position: relative; /* Позволяет позиционировать элементы внутри */
+            text-align: center;
+        }
+        .logo {
+            font-family: "Damion", cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 58px;
+            color: white;
+            text-shadow:
+                -1px -1px 0 #F33B7F,
+                1px -1px 0 #F33B7F,
+                -1px 1px 0 #F33B7F,
+                1px 1px 0 #F33B7F,
+                3px 3px 5px rgba(0, 0, 0, 0.7); /* Добавляем тень к тексту */
+        }
+        h1 {
+            color: white;
+            font-family: "Handjet", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 36px;
+            font-variation-settings:
+                "ELGR" 1,
+                "ELSH" 2;
+        }
+        .hero_container {
+            display: flex; /* Используем Flexbox */
+            flex-direction: column; /* Элементы располагаются в колонку */
+            align-items: center; /* Центрируем по горизонтали */
+            text-align: center; /* Центрируем текст внутри hero_text */
+            height: auto; /* Высота может быть автоматической */
+        }
+        p {
+            color: white;
+            font-family: "Alumni Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 26px;
+        }
+        .hero_text {
+            width: 300px;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +93,7 @@ p {
             Poizon Pavlov!</p>
     </div>
     <button>Выделиться</button>
-</div>
+    </div>
 </div>
 </body>
 </html>
