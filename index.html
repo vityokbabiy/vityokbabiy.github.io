@@ -1,134 +1,96 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Order</title>
+    <meta charset="UTF-8">
+    <title>Poizon Pavlov Order</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #C3C9FB; /* Светлый фон */
-            margin: 0; /* Убираем отступы по умолчанию */
-            padding: 20px; /* Внутренние отступы */
-            display: flex; /* Используем flexbox для центровки */
-            flex-direction: column; /* Вертикальная ориентация */
-            align-items: center; /* Центрируем по горизонтали */
-            justify-content: center; /* Центрируем по вертикали */
-            height: 100vh; /* Высота на весь экран */
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Handjet:wght@100..900&display=swap');
 
-        h1 {
-            color: #333; /* Цвет текста заголовка */
-            font-size: 30px; /* Размер шрифта заголовка */
-            margin-bottom: 36px; /* Отступ снизу */
-        }
-
-        img {
-            max-width: 90%; /* Уменьшенная ширина изображения */
-            height: auto; /* Автоматическая высота */
-            margin-bottom: 20px; /* Отступ снизу */
-        }
-
-        button {
-            background-color: #FF84A0; /* Зеленый цвет кнопки */
-            color: white; /* Цвет текста кнопки */
-            padding: 15px 30px; /* Отступы внутри кнопки */
-            border: none; /* Убираем рамку */
-            border-radius: 5px; /* Закругленные углы */
-            cursor: pointer; /* Курсор при наведении */
-            font-size: 1.2em; /* Размер шрифта кнопки */
-            transition: background-color 0.3s ease; /* Плавный переход цвета */ /* Плавный переход цвета фона */
-        }
-
-        button:hover {
-            background: #F76189; /* Более темный цвет при наведении */
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box; /* Учитываем padding в ширине */
-        }
-        input[type="checkbox"] {
-            margin-right: 10px;
-        }
-        #main {
-            text-align: center;
-            background: #C3C9FB;
-            padding: 20px;
-            max-width: 400px;
-            margin: auto;
-        }
-        #form {
-            display: none;
-            text-align: center;
-            background: #C3C9FB;
-            padding: 20px;
-            max-width: 400px;
-            margin: auto;
-        }
-        #order_2{
-            margin-top: 10px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 870px;
+    display: flex;
+    justify-content: center;
+}
+.container {
+    width: 390px;
+    text-align: center;
+}
+.wrapper {
+    background: rgb(47,31,111);
+    background: linear-gradient(180deg, rgba(47,31,111,1) 0%, rgba(166,0,99,1) 100%);
+    width: 390px;
+    height: 870px;
+    overflow: hidden;
+    position: relative; /* Позволяет позиционировать элементы внутри */
+    text-align: center;
+}
+.logo {
+    font-family: "Damion", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 58px;
+    color: white;
+    text-shadow:
+        -1px -1px 0 #F33B7F,
+        1px -1px 0 #F33B7F,
+        -1px 1px 0 #F33B7F,
+        1px 1px 0 #F33B7F,
+        3px 3px 5px rgba(0, 0, 0, 0.7); /* Adding a drop shadow */
+}
+h1 {
+    color: white;
+    font-family: "Handjet", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 36px;
+    font-variation-settings:
+    "ELGR" 1,
+    "ELSH" 2;
+}
+.hero_container {
+    display: flex; /* Используем Flexbox */
+    flex-direction: column; /* Элементы располагаются в колонку */
+    align-items: center; /* Центрируем по горизонтали */
+    text-align: center; /* Центрируем текст внутри hero_text */
+    height: 100vh; /* Задаем высоту контейнера на весь экран */
+}
+p {
+    color:  white;
+    font-family: "Alumni Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 26px;
+}
+.hero_text {
+    width: 300px;
+    margin: 20px;
+}
     </style>
 </head>
 <body>
-    <div id="main">
-    <h1>Оформление заказа</h1>
-    <img src="icon.png" alt="icon">
-    <button id="order">Оформить</button>
+<div class="wrapper">
+    <header class="container">
+    <span class="logo">Poizon Pavlov</span>
+    </header>
+    <div class="hero_container">
+    <img src="static/logo.png">
+    <div class="hero_text">
+        <h1>ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ СЕГОДНЯ!</h1>
+        <p>Погрузиться в мир экслюзивных товаров из Китая - легко,
+            еще легче оформить заказ и выделиться из толпы благодаря
+            Poizon Pavlov!</p>
     </div>
-    <form id="form">
-        <h1>Информация о товаре</h1>
-        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
-        <input type="text" placeholder="Размер товара" id="size">
-        <h1>Данные для доставки Boxberry</h1>
-        <input type="text" placeholder="ФИО" id="name">
-        <input type="text" placeholder="Город" id="city">
-        <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
-        <input type="text" placeholder="Домашний адрес" id="house_address">
-        <input type="text" placeholder="Номер квартиры" id="apartment_number">
-        <input type="text" placeholder="Почтовый индекс" id="post_index">
-        <button id="order_2">Заказать</button>
-    </form>
-    <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
-    <script>
-        let tg = window.Telegram.WebApp;
-        let order = document.getElementById('order');
-        let order2 = document.getElementById('order_2');
-        tg.expand();
-
-        order.addEventListener('click', () => {
-            document.getElementById('main').style.display = 'none';
-            document.getElementById('form').style.display = 'block';
-        })
-        order2.addEventListener('click', () => {
-            let articule = document.getElementById('articule').value;
-            let size = document.getElementById('size').value;
-            let name = document.getElementById('name').value;
-            let city = document.getElementById('city').value;
-            let delivery_address = document.getElementById('delivery_address').value;
-            let house_address = document.getElementById('house_address').value;
-            let apartment_number = document.getElementById('apartment_number').value;
-            let post_index = document.getElementById('post_index').value;
-
-            let data = {
-                name: name,
-                city: city,
-                delivery_address: delivery_address,
-                house_address: house_address,
-                apartment_number: apartment_number,
-                post_index: post_index,
-                articule: articule,
-                size: size,
-            }
-
-            tg.sendData(JSON.stringify(data));
-            tg.close();
-        })
-    </script>
+    <button>Выделиться</button>
+</div>
+</div>
 </body>
 </html>
