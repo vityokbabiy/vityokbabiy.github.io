@@ -15,6 +15,7 @@
             box-sizing: border-box;
         }
         body {
+            text-align: center;
             height: 850px;
             display: flex;
             justify-content: center;
@@ -68,7 +69,7 @@
                 "ELGR" 1,
                 "ELSH" 2;
         }
-        .hero_container {
+        #hero_container {
             display: flex; /* Используем Flexbox */
             flex-direction: column; /* Элементы располагаются в колонку */
             align-items: center; /* Центрируем по горизонтали */
@@ -89,7 +90,7 @@
             width: 300px;
             margin: 20px;
         }
-        .order_button{
+        #order_button, #order{
             background: rgb(241,207,48);
             background: linear-gradient(90deg, rgba(241,207,48,1) 0%, rgba(240,0,188,1) 50%, rgba(27,109,193,1) 100%);
             color: white;
@@ -107,12 +108,30 @@
             border-width: 0;
             box-shadow: 4px 4px 6px rgba(61, 105, 16, 0.5);
         }
-        .order_button:hover {
+        #order_button, #order:hover {
             background: rgb(224,193,47);
             background: linear-gradient(90deg, rgba(224,193,47,1) 0%, rgba(207,0,162,1) 50%, rgba(23,93,164,1) 100%);
         }
-        .order_button:focus {
+        #order_button, #order:focus {
             box-shadow: 1px 1px 1px 3px rgba(61, 105, 16, 0.5);
+        }
+        #form {
+            display: none;
+            text-align: center;
+            padding: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+        #form h1 {
+            color: white;
+            font-family: "Handjet", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 36px;
+            font-variation-settings:
+                "ELGR" 1,
+                "ELSH" 2;
         }
     </style>
 </head>
@@ -121,7 +140,20 @@
     <header class="container">
     <span class="logo">Poizon Pavlov</span>
     </header>
-    <div class="hero_container">
+    <form id="form">
+        <h1>Информация о товаре</h1>
+        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
+        <input type="text" placeholder="Размер товара" id="size">
+        <h1>Данные для доставки Boxberry</h1>
+        <input type="text" placeholder="ФИО" id="name">
+        <input type="text" placeholder="Город" id="city">
+        <input type="text" placeholder="Адрес ближайшего пункта выдачи Boxberry" id="delivery_address">
+        <input type="text" placeholder="Домашний адрес" id="house_address">
+        <input type="text" placeholder="Номер квартиры" id="apartment_number">
+        <input type="text" placeholder="Почтовый индекс" id="post_index">
+        <button id="order">Заказать</button>
+    </form>
+    <div id="hero_container">
     <img src="static/logo.png">
     <div class="hero_text">
         <h1>ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ СЕГОДНЯ!</h1>
@@ -129,13 +161,43 @@
             еще легче оформить заказ и выделиться из толпы благодаря
             Poizon Pavlov!</p>
     </div>
-    <button class="order_button">Выделиться!</button>
+    <button id="order_button">Выделиться!</button>
     </div>
 </div>
 <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script>
         let tg = window.Telegram.WebApp;
+        let make_order = document.getElementById('order_button');
+        let order = document.getElementById('order');
         tg.expand();
+
+        make_order.addEventListener('click', () => {
+            document.getElementById('hero_container').style.display = 'none';
+            document.getElementById('form').style.display = 'block';
+        })
+        order.addEventListener('click', () => {
+            let articule = document.getElementById('articule').value;
+            let size = document.getElementById('size').value;
+            let name = document.getElementById('name').value;
+            let city = document.getElementById('city').value;
+            let delivery_address = document.getElementById('delivery_address').value;
+            let house_address = document.getElementById('house_address').value;
+            let apartment_number = document.getElementById('apartment_number').value;
+            let post_index = document.getElementById('post_index').value;
+
+            let data = {
+                name: name,
+                city: city,
+                delivery_address: delivery_address,
+                house_address: house_address,
+                apartment_number: apartment_number,
+                post_index: post_index,
+                articule: articule,
+                size: size,
+            }
+            tg.sendData(JSON.stringify(data));
+            tg.close();
+        })
     </script>
 </body>
 </html>
