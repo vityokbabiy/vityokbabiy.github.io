@@ -314,8 +314,7 @@
                 house_address: house_address,
                 apartment_number: apartment_number,
                 post_index: post_index,
-                articule: [articule1, articule2, articule3, articule4, articule5, articule6, articule7, articule8, articule9, articule10],
-                size: [size1, size2, size3, size4, size5, size6, size7, size8, size9, size10],
+                order: {articule1: size1, articule2: size2, articule3: size3, articule4: size4, articule5: size5, articule6: size6, articule7: size7, articule8: size8, articule9: size9, articule10: size10,}
             }
             tg.sendData(JSON.stringify(data));
             tg.close();
