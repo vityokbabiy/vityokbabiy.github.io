@@ -90,7 +90,7 @@
             width: 300px;
             margin: 20px;
         }
-        #order_button, #order{
+        #order_button{
             background: rgb(241,207,48);
             background: linear-gradient(90deg, rgba(241,207,48,1) 0%, rgba(240,0,188,1) 50%, rgba(27,109,193,1) 100%);
             color: white;
@@ -108,17 +108,43 @@
             border-width: 0;
             box-shadow: 4px 4px 6px rgba(61, 105, 16, 0.5);
         }
-        #order_button, #order:hover {
+        #order{
+            background: rgb(241,207,48);
+            background: linear-gradient(90deg, rgba(241,207,48,1) 0%, rgba(240,0,188,1) 50%, rgba(27,109,193,1) 100%);
+            color: white;
+            font-family: "Handjet", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            font-size: 34px;
+            font-variation-settings:
+                "ELGR" 1,
+                "ELSH" 2;
+            width: 230px;
+            height: 65px;
+            border-radius: 6px;
+            border-width: 0;
+            box-shadow: 4px 4px 6px rgba(61, 105, 16, 0.5);
+        }
+        #order_button:hover {
             background: rgb(224,193,47);
             background: linear-gradient(90deg, rgba(224,193,47,1) 0%, rgba(207,0,162,1) 50%, rgba(23,93,164,1) 100%);
         }
-        #order_button, #order:focus {
+        #order:hover {
+            background: rgb(224,193,47);
+            background: linear-gradient(90deg, rgba(224,193,47,1) 0%, rgba(207,0,162,1) 50%, rgba(23,93,164,1) 100%);
+        }
+        #order_button:focus {
+            box-shadow: 1px 1px 1px 3px rgba(61, 105, 16, 0.5);
+        }
+        #order:focus {
             box-shadow: 1px 1px 1px 3px rgba(61, 105, 16, 0.5);
         }
         #form {
             display: none;
             text-align: center;
             padding: 10px;
+            padding-top: 0;
             max-width: 400px;
             margin: auto;
         }
@@ -133,6 +159,18 @@
                 "ELGR" 1,
                 "ELSH" 2;
         }
+        span {
+            padding-top: 0;
+            color: white;
+            font-family: "Handjet", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 30px;
+            font-variation-settings:
+                "ELGR" 1,
+                "ELSH" 2;
+        }
     </style>
 </head>
 <body>
@@ -142,8 +180,59 @@
     </header>
     <form id="form">
         <h1>Информация о товаре</h1>
-        <input type="text" placeholder="Артикулы товаров Poizon" id="articule">
-        <input type="text" placeholder="Размер товара" id="size">
+        <span>Количество лотов: </span>
+        <select id="amount_of_items" name="lot_counter">
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <div id="art1">
+            <input type="text" placeholder="Артикул 1-го товара с Poizon" id="articule1">
+            <input type="text" placeholder="Размер 1-го товара" id="size1">
+        </div>
+        <div id="art2" style="display: none;">
+            <input type="text" placeholder="Артикул 2-го товара с Poizon" id="articule2">
+            <input type="text" placeholder="Размер 2-го товара" id="size2">
+        </div>
+        <div id="art3" style="display: none;">
+            <input type="text" placeholder="Артикул 3-го товара с Poizon" id="articule3">
+            <input type="text" placeholder="Размер 3-го товара" id="size3">
+        </div>
+        <div id="art4" style="display: none;">
+            <input type="text" placeholder="Артикул 4-го товара с Poizon" id="articule4">
+            <input type="text" placeholder="Размер 4-го товара" id="size4">
+        </div>
+        <div id="art5" style="display: none;">
+            <input type="text" placeholder="Артикул 5-го товара с Poizon" id="articule5">
+            <input type="text" placeholder="Размер 5-го товара" id="size5">
+        </div>
+        <div id="art6" style="display: none;">
+            <input type="text" placeholder="Артикул 6-го товара с Poizon" id="articule6">
+            <input type="text" placeholder="Размер 6-го товара" id="size6">
+        </div>
+        <div id="art7" style="display: none;">
+            <input type="text" placeholder="Артикул 7-го товара с Poizon" id="articule7">
+            <input type="text" placeholder="Размер 7-го товара" id="size7">
+        </div>
+        <div id="art8" style="display: none;">
+            <input type="text" placeholder="Артикул 8-го товара с Poizon" id="articule8">
+            <input type="text" placeholder="Размер 8-го товара" id="size8">
+        </div>
+        <div id="art9" style="display: none;">
+            <input type="text" placeholder="Артикул 9-го товара с Poizon" id="articule9">
+            <input type="text" placeholder="Размер 9-го товара" id="size9">
+        </div>
+        <div id="art10" style="display: none;">
+            <input type="text" placeholder="Артикул 10-го товара с Poizon" id="articule10">
+            <input type="text" placeholder="Размер 10-го товара" id="size10">
+        </div>
         <h1>Данные для доставки Boxberry</h1>
         <input type="text" placeholder="ФИО" id="name">
         <input type="text" placeholder="Город" id="city">
@@ -169,6 +258,7 @@
         let tg = window.Telegram.WebApp;
         let make_order = document.getElementById('order_button');
         let order = document.getElementById('order');
+        let selectElement = document.getElementById('amount_of_items');
         tg.expand();
 
         make_order.addEventListener('click', () => {
@@ -176,9 +266,40 @@
             document.getElementById('form').style.display = 'block';
             window.scrollTo(0, 0)
         })
+
+        selectElement.addEventListener('change', () => {
+            let value = selectElement.value;
+            for (let i = 1; i <= 10; i++) {
+                if (i <= value) {
+                    document.getElementById('art' + i).style.display = 'block';
+                }
+                else {
+                    document.getElementById('art' + i).style.display = 'none';
+                }
+            }
+        })
+
         order.addEventListener('click', () => {
-            let articule = document.getElementById('articule').value;
-            let size = document.getElementById('size').value;
+            let articule1 = document.getElementById('articule1').value;
+            let articule2 = document.getElementById('articule2').value;
+            let articule3 = document.getElementById('articule3').value;
+            let articule4 = document.getElementById('articule4').value;
+            let articule5 = document.getElementById('articule5').value;
+            let articule6 = document.getElementById('articule6').value;
+            let articule7 = document.getElementById('articule7').value;
+            let articule8 = document.getElementById('articule8').value;
+            let articule9 = document.getElementById('articule9').value;
+            let articule10 = document.getElementById('articule10').value;
+            let size1 = document.getElementById('size1').value;
+            let size2 = document.getElementById('size2').value;
+            let size3 = document.getElementById('size3').value;
+            let size4 = document.getElementById('size4').value;
+            let size5 = document.getElementById('size5').value;
+            let size6 = document.getElementById('size6').value;
+            let size7 = document.getElementById('size7').value;
+            let size8 = document.getElementById('size8').value;
+            let size9 = document.getElementById('size9').value;
+            let size10 = document.getElementById('size10').value;
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
@@ -193,8 +314,8 @@
                 house_address: house_address,
                 apartment_number: apartment_number,
                 post_index: post_index,
-                articule: articule,
-                size: size,
+                articule: [articule1, articule2, articule3, articule4, articule5, articule6, articule7, articule8, articule9, articule10],
+                size: [size1, size2, size3, size4, size5, size6, size7, size8, size9, size10],
             }
             tg.sendData(JSON.stringify(data));
             tg.close();
