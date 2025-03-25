@@ -343,26 +343,26 @@
 
         order.addEventListener('click', () => {
             document.getElementById('error').innerText = '';
-            let articule1 = document.getElementById('articule1').value;
-            let articule2 = document.getElementById('articule2').value;
-            let articule3 = document.getElementById('articule3').value;
-            let articule4 = document.getElementById('articule4').value;
-            let articule5 = document.getElementById('articule5').value;
-            let articule6 = document.getElementById('articule6').value;
-            let articule7 = document.getElementById('articule7').value;
-            let articule8 = document.getElementById('articule8').value;
-            let articule9 = document.getElementById('articule9').value;
-            let articule10 = document.getElementById('articule10').value;
-            let size1 = document.getElementById('size1').value;
-            let size2 = document.getElementById('size2').value;
-            let size3 = document.getElementById('size3').value;
-            let size4 = document.getElementById('size4').value;
-            let size5 = document.getElementById('size5').value;
-            let size6 = document.getElementById('size6').value;
-            let size7 = document.getElementById('size7').value;
-            let size8 = document.getElementById('size8').value;
-            let size9 = document.getElementById('size9').value;
-            let size10 = document.getElementById('size10').value;
+            let articule = [document.getElementById('articule1').value,
+            document.getElementById('articule2').value,
+            document.getElementById('articule3').value,
+            document.getElementById('articule4').value,
+            document.getElementById('articule5').value,
+            document.getElementById('articule6').value,
+            document.getElementById('articule7').value,
+            document.getElementById('articule8').value,
+            document.getElementById('articule9').value,
+            document.getElementById('articule10').value]
+            let size = [document.getElementById('size1').value,
+            document.getElementById('size2').value,
+            document.getElementById('size3').value,
+            document.getElementById('size4').value,
+            document.getElementById('size5').value,
+            document.getElementById('size6').value,
+            document.getElementById('size7').value,
+            document.getElementById('size8').value,
+            document.getElementById('size9').value,
+            document.getElementById('size10').value]
             let name = document.getElementById('name').value;
             let city = document.getElementById('city').value;
             let delivery_address = document.getElementById('delivery_address').value;
@@ -404,6 +404,13 @@
                 apartment_number: apartment_number,
                 post_index: post_index,
                 order: {},
+            }
+            for (let i = 0; i <= 10; i++) {
+                if (articule[i] !== '') {
+                    data.order[i] = [articule[i], size[i]];
+                } else {
+                    continue;
+                }
             }
             tg.sendData(JSON.stringify(data));
             tg.close();
