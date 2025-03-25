@@ -211,9 +211,17 @@
             font-style: normal;
             font-size: 20px;
         }
+        #error{
+            color: white;
+            font-family: "Alumni Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 20px;
+        }
     </style>
 </head>
-<body id="bodyy">
+<body>
 <div id="wrapper">
     <header class="container">
     <span class="logo">Poizon Pavlov</span>
@@ -292,6 +300,7 @@
         <input type="text" placeholder="Домашний адрес" id="house_address">
         <input type="text" placeholder="Номер квартиры" id="apartment_number">
         <input type="text" placeholder="Почтовый индекс" id="post_index">
+        <div id="error"></div>
         <button id="order">Заказать</button>
     </form>
     <div id="hero_container">
@@ -333,6 +342,7 @@
         })
 
         order.addEventListener('click', () => {
+            document.getElementById('error').innerText = '';
             let articule1 = document.getElementById('articule1').value;
             let articule2 = document.getElementById('articule2').value;
             let articule3 = document.getElementById('articule3').value;
@@ -359,7 +369,33 @@
             let house_address = document.getElementById('house_address').value;
             let apartment_number = document.getElementById('apartment_number').value;
             let post_index = document.getElementById('post_index').value;
-
+            if (name === '') {
+                document.getElementById('error').innerText = 'Введите имя!';
+                return;
+            }
+            if ((name.trim().split(/s+/)).length !== 3) {
+                document.getElementById('error').innerText = 'Введите полное ФИО!';
+            }
+            if (city === '') {
+                document.getElementById('error').innerText = 'Введите город!';
+                return;
+            }
+            if (delivery_address === '') {
+                document.getElementById('error').innerText = 'Введите адрес Boxberry!';
+                return;
+            }
+            if (house_address === '') {
+                document.getElementById('error').innerText = 'Введите домашний адрес!';
+                return;
+            }
+            if (apartment_number === '') {
+                document.getElementById('error').innerText = 'Введите номер квартиры!';
+                return;
+            }
+            if (post_index === '') {
+                document.getElementById('error').innerText = 'Введите почтовый индекс!';
+                return;
+            }
             let data = {
                 name: name,
                 city: city,
@@ -367,7 +403,7 @@
                 house_address: house_address,
                 apartment_number: apartment_number,
                 post_index: post_index,
-                order: {1: [articule1, size1], 2: [articule2, size2], 3: [articule3, size3], 4: [articule4, size4], 5: [articule5, size5], 6: [articule6, size6], 7: [articule7, size7], 8: [articule8, size8], 9: [articule9, size9], 10: [articule10, size10]}
+                order: {},
             }
             tg.sendData(JSON.stringify(data));
             tg.close();
