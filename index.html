@@ -300,7 +300,7 @@
             for (let i = 1; i <= 10; i++) {
                 let articuleKey = articule${i};
                 let sizeKey = size${i};
-                data.order[articuleKey] = document.getElementById(sizeKey).value;
+                data.order[document.getElementById(articuleKey).value] = document.getElementById(sizeKey).value;
             }
 
             tg.sendData(JSON.stringify(data));
